@@ -35,6 +35,7 @@ public class ColoredPlatform : MonoBehaviour
         {
             if (i.CompareTag("Spray"))
             {
+                i.GetComponent<CircleCollider2D>().enabled = false;
                 PaintedPlatform();
             }
         }
@@ -44,12 +45,12 @@ public class ColoredPlatform : MonoBehaviour
     {
         if(!_collider.enabled) 
             _collider.enabled = true;
-        curfillingAmount += 0.001f;
+        curfillingAmount += 0.1f;
         if (Mathf.Abs(curfillingAmount - max) <= 0.008f)
         {
             _collider.size = new Vector2(_collider.size.x, 1);
             _collider.offset = new Vector2(_collider.offset.x, 0);
-            _mask.position = new Vector2(_mask.position.x, 0);
+            _mask.localPosition = new Vector3(_mask.localPosition.x,0);
             Destroy(this);
         }
         // 크기 조절

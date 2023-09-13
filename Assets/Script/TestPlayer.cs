@@ -21,6 +21,7 @@ public class TestPlayer : MonoBehaviour
         transform.Translate(new Vector3(moveSpeed*Input.GetAxisRaw("Horizontal"), 0) * Time.deltaTime);
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
+            rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(Vector2.up * jumpForce);
             isGrounded = false;
         }

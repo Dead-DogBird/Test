@@ -24,11 +24,6 @@ public class Spray : MonoBehaviour
         _tween = _sprite.DOColor(new Color(_sprite.color.r,_sprite.color.g,_sprite.color.b,0), 0.2f);
     
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, 0.64f*0.5f);
-    }
     // Update is called once per frame
     void Update()
     {
