@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
@@ -34,12 +35,10 @@ public class DroppedPlatform : MonoBehaviour
         gravity += (gravity*Time.deltaTime)/2;
         transform.position -= new Vector3(0, gravity);
     }
-    public void Dropped()
+    async public UniTaskVoid Dropped()
     {
-        _tween =  _sprite.DOColor(new Color(40/255f,36/255f,90/255f), 0.2f);
-        
-        
-
+        _tween =  _sprite.DOColor(new Color(40/255f,36/255f,90/255f), 0.1f);
+        await UniTask.Delay(TimeSpan.FromSeconds(1.2f));
         isDrop = true;
         Destroy(gameObject,2f);
     }
