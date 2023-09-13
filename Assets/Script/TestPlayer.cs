@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class TestPlayer : MonoBehaviour
@@ -36,6 +38,14 @@ public class TestPlayer : MonoBehaviour
         if ((collision.gameObject.CompareTag("Ground")||collision.gameObject.CompareTag("DropedPlatform")||collision.gameObject.CompareTag("ColoredPlatform"))&&collision.contacts[1].normal.y>0.7f)
         {
             isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.transform.CompareTag("DropedPlatform"))
+        {
+            other.transform.GetComponent<DroppedPlatform>().Dropped();
         }
     }
 }
