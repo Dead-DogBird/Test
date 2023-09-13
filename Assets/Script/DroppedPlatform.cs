@@ -9,7 +9,7 @@ public class DroppedPlatform : MonoBehaviour
     private SpriteRenderer _sprite;
     private Tween _tween;
 
-    private float gravity = 0.05f;
+    private float gravity = 0.03f;
 
     private bool isDrop = false;
     // Start is called before the first frame update
@@ -31,14 +31,17 @@ public class DroppedPlatform : MonoBehaviour
 
     void Falling()
     {
-        gravity += gravity * 0.02f;
-        transform.position += new Vector3(0, gravity);
+        gravity += (gravity*Time.deltaTime)/2;
+        transform.position -= new Vector3(0, gravity);
     }
     public void Dropped()
     {
-        isDrop = true;
         _tween =  _sprite.DOColor(new Color(40/255f,36/255f,90/255f), 0.2f);
-        Destroy(gameObject,1.2f);
+        
+        
+
+        isDrop = true;
+        Destroy(gameObject,2f);
     }
     
 }

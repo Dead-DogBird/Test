@@ -43,7 +43,7 @@ public class TestPlayer : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.transform.CompareTag("DropedPlatform"))
+        if (other.transform.CompareTag("DropedPlatform")&&other.transform.position.y<transform.position.y)
         {
             other.transform.GetComponent<DroppedPlatform>().Dropped();
         }
