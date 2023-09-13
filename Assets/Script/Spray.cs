@@ -3,21 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Random = UnityEngine.Random;
 
 public class Spray : MonoBehaviour
 {
     private CircleCollider2D my_collider;
-
+    
     private bool isColiderCheck = false;
-
+    protected SpriteRenderer _sprite;
+    private Tween _tween;
     private int id;
     // Start is called before the first frame update
     void Start()
     {
         my_collider = GetComponent<CircleCollider2D>();
+        _sprite = GetComponent<SpriteRenderer>();
         AutoDestroy().Forget();
         id = Random.Range(0, 100);
+        _tween = _sprite.DOColor(new Color(_sprite.color.r,_sprite.color.g,_sprite.color.b,0), 0.2f);
+    
     }
     private void OnDrawGizmos()
     {
@@ -45,6 +50,7 @@ public class Spray : MonoBehaviour
     private void OnDestroy()
     {
         isColiderCheck = true;
+        _tween.Complete();
     }
 
     async UniTaskVoid AutoDestroy()
