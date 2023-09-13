@@ -20,7 +20,8 @@ public class DroppedPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(isDrop)
+            Falling();
     }
 
     private void OnDestroy()
