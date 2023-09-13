@@ -45,7 +45,7 @@ public class TestPlayer : MonoBehaviour
     {
         if (other.transform.CompareTag("DropedPlatform")&&other.transform.position.y<transform.position.y)
         {
-            other.transform.GetComponent<DroppedPlatform>().Dropped();
+            other.transform.GetComponent<DroppedPlatform>().Dropped().Forget();
         }
     }
 }
