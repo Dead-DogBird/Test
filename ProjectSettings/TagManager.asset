@@ -7,14 +7,18 @@ TagManager:
   - Ground
   - Spray
   - SprayCheckColider
+  - DropedPlatform
+  - ColoredPlatform
+  - Wall
+  - Platform
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ignore Collider
   - Water
   - UI
-  - 
+  - Platform
   - 
   - 
   - 

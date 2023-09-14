@@ -14,6 +14,7 @@ public class TestColorObject : MonoBehaviour
     {
        
         colorCallBackController.onColiderEnter += setSprayControl;
+        GameManager.Instance.SetPoint();
     }
 
     // Update is called once per frame
@@ -28,6 +29,7 @@ public class TestColorObject : MonoBehaviour
        {
             colordPart.SetActive(true);
             isActive = true;
+            GameManager.Instance.GetPoint();
             Destroy(colorCallBackController.gameObject);
        }
     }
